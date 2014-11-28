@@ -61,5 +61,9 @@ if jQuery?
       for k, v of count
         target.find(".#{k}").text(v)
 
-    @.on 'keyup', count_sms
+    @.on 'keyup paste', (event) ->
+      if event.type == 'paste' 
+        setTimeout count_sms, 0
+      else
+        count_sms()
     count_sms()

@@ -104,7 +104,13 @@
         }
         return _results;
       };
-      this.on('keyup', count_sms);
+      this.on('keyup paste', function(event) {
+        if (event.type == 'paste') {
+          setTimeout(count_sms, 100);
+        } else {
+          count_sms();
+        }
+      });
       return count_sms();
     };
   }
